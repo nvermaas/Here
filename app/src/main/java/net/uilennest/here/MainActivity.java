@@ -1,11 +1,6 @@
 package net.uilennest.here;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.widget.TextView;
 
 // https://www.tutorialspoint.com/android/android_location_based_services.htm
 import android.Manifest;
@@ -108,10 +103,11 @@ public class MainActivity extends Activity {
                     double latitude = gps.getLatitude();
                     double longitude = gps.getLongitude();
                     String coordinates = Double.toString(longitude) + ',' + Double.toString(latitude);
-                    // \n is for new line
+
                     Toast.makeText(getApplicationContext(), "Sending Coordinates : "+coordinates,
                             Toast.LENGTH_LONG).show();
-                    sendEmail(coordinates);
+                    // sendEmail(coordinates);
+                    postCoordinates(coordinates);
                 }else{
                     // can't get location
                     // GPS or Network is not enabled
@@ -146,7 +142,7 @@ public class MainActivity extends Activity {
 
     protected void postCoordinates(String content) {
         try {
-            URL url = new URL("http://uilennest.net/owlsnest/hiking/tripdetails/1000/");
+            URL url = new URL("http://uilennest.net/here");
             String type = "application/json";
             HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
             httpURLConnection.setDoOutput(true);
