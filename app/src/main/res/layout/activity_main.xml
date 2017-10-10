@@ -6,9 +6,14 @@
 
 
     <Button
-        android:id = "@+id/button"
+        android:id = "@+id/buttonGetLocation"
         android:layout_width = "fill_parent"
         android:layout_height = "wrap_content"
-        android:text = "getlocation"/>
+        android:text = "Get Location"/>
 
+    <Button
+        android:id = "@+id/buttonSendHome"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
+        android:text = "Send Home"/>
 </LinearLayout>
