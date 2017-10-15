@@ -7,46 +7,11 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-
-        <EditText
-            android:id="@+id/editName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="username"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="2dp" />
-
-        <EditText
-            android:id="@+id/editDescription"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="description"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="98dp" />
-
-        <TextView
-            android:id="@+id/textCoordinates"
-            android:layout_width="356dp"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
     <Button
         android:id="@+id/buttonGetLocation"
         android:layout_width="98dp"
         android:layout_height="83dp"
-        android:layout_marginTop="154dp"
+        android:layout_marginTop="83dp"
         android:background="@android:drawable/ic_menu_mylocation"
         android:backgroundTint="@android:color/holo_green_dark"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -57,10 +22,10 @@
         tools:layout_constraintTop_creator="1" />
 
     <Button
-        android:id="@+id/buttonSendHomePost"
+        android:id="@+id/buttonSendHome"
         android:layout_width="88dp"
         android:layout_height="90dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="50dp"
         android:background="?attr/actionModeShareDrawable"
         android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -68,17 +33,17 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonGetLocation"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintHorizontal_bias="0.52" />
 
     <Button
-        android:id="@+id/buttonSendHomePut"
+        android:id="@+id/buttonSendHomeTest"
         android:layout_width="88dp"
         android:layout_height="90dp"
-        android:layout_marginTop="170dp"
-        android:background="@android:drawable/stat_notify_sync"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:layout_marginTop="182dp"
+        android:background="?attr/actionModeShareDrawable"
+        android:backgroundTint="@android:color/darker_gray"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonGetLocation"
