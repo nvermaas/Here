@@ -4,4 +4,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="rest_api_here">http://uilennest.net/here</string>
+    <string name="google_maps_key">AIzaSyDOusogZI0bguCf8vzuCXwqVVurGCegIqA</string>
 </resources>

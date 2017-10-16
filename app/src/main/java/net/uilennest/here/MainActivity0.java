@@ -4,10 +4,8 @@ import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-
 import android.test.mock.MockPackageManager;
 import android.util.Log;
 import android.view.View;
@@ -16,14 +14,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
 import org.json.JSONObject;
 
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -33,7 +28,7 @@ import java.util.List;
 // json
 // http
 
-public class MainActivity extends Activity {
+public class MainActivity0 extends Activity {
 
     Button buttonGetLocation;
     Button buttonSendHomePost;
@@ -80,13 +75,13 @@ public class MainActivity extends Activity {
             }
         } catch (Exception e) {
             e.printStackTrace();
-         }
+        }
 
         return defaultName;
     }
 
     void doGetLocation() {
-        gps = new GPSTracker(MainActivity.this);
+        gps = new GPSTracker(MainActivity0.this);
 
         // check if GPS enabled
         if (gps.canGetLocation()) {
@@ -112,13 +107,6 @@ public class MainActivity extends Activity {
         HTTP_METHOD = method;
         Toast.makeText(getApplicationContext(), HTTP_METHOD+ " to HomeBase: \n"+latitude+", "+longitude, Toast.LENGTH_LONG).show();
         sendCoordinates();
-    }
-
-    void doGoogleMaps() {
-        Intent intent =new Intent(this, GoogleMapActivity.class);
-        intent.putExtra("latitude",latitude);
-        intent.putExtra("longitude",longitude);
-        startActivity(intent);
     }
 
     @Override
@@ -156,8 +144,7 @@ public class MainActivity extends Activity {
             public void onClick(View arg0) {
                 // create class object
                 doGetLocation();
-                //doShowLocation();
-                doGoogleMaps();
+                doShowLocation();
             }
         });
 
@@ -172,19 +159,19 @@ public class MainActivity extends Activity {
             }
         });
 
+        if (username.equalsIgnoreCase("nicovermaas")) {
+            buttonSendHomePut = (Button) findViewById(R.id.buttonSendHomePut);
+            buttonSendHomePut.setOnClickListener(new View.OnClickListener() {
 
-        buttonSendHomePut = (Button) findViewById(R.id.buttonSendHomePut);
-        buttonSendHomePut.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                doGetLocation();
-                HOMEBASE_URL = "http://uilennest.net/homebase/datacenter/locations/1/";
-                doSendCoordinates("PUT"); // create nieuw
-            }
-        });
+                @Override
+                public void onClick(View arg0) {
+                    doGetLocation();
+                    HOMEBASE_URL = "http://uilennest.net/homebase/datacenter/locations/1/";
+                    doSendCoordinates("PUT"); // create nieuw
+                }
+            });
+        }
     }
-
 
 
     public void sendCoordinates() {
@@ -197,21 +184,6 @@ public class MainActivity extends Activity {
                     conn.setRequestMethod(HTTP_METHOD);
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
                     conn.setRequestProperty("Accept","application/json");
-
-                    // add basic authentication - so far none of the options work
-                    String authStr = "here:a***";
-
-                    // encode data on your side using BASE64
-                    //byte[] bytesEncoded = Base64.encodeBase64(authStr.getBytes());
-                    //String authEncoded = new String(bytesEncoded);
-
-                    //String authEncoded = Base64.getEncoder().encodeToString((authStr).getBytes(StandardCharsets.UTF_8));  //Java 8
-                    //conn.setRequestProperty("Authorization", "Basic "+authEncoded);
-
-                    // byte[] authBytes = "here:***".getBytes("UTF-8");
-                    // String authEncoded = javax.xml.bind.DatatypeConverter.printBase64Binary(authBytes);
-                    // conn.setRequestProperty("Authorization", "Basic "+authEncoded);
-
                     conn.setDoOutput(true);
                     conn.setDoInput(true);
 
